@@ -2,9 +2,20 @@
   text-align: center;
 }
 
+.hole {
+  background-color: #282c34;
+  width: 2.3%;
+  height: max-content;
+  z-index: 999;
+  position: absolute;
+  top: 300px;
+  color: #282c34;
+  border-radius: 100px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  border-radius: 250px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

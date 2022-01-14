@@ -1,21 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
-
+import nurture from './nurture.jpg'
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <div className="hole">
+          .
+        </div>
+        <img src={nurture} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Nurture
+          <figcaption style={{ fontSize: '16px' }}>
+            Porter Robinson
+          </figcaption>
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://open.spotify.com/album/4Hjqdhj5rh816i1dfcUEaM"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          go to spotify
         </a>
       </header>
     </div>
