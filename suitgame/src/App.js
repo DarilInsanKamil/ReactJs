@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { FaRegHandPaper, FaRegHandPeace, FaRegHandRock } from 'react-icons/fa';
+import { FaRegHandPaper, FaRegHandPeace, FaRegHandRock, } from 'react-icons/fa';
 import {
-  Container, Button, ButtonClick, Choice, ButtonPlay,
+  Container, Button, ButtonClick, Choice, ButtonPlay, Txt,
   Result
 } from './styled/homeStyled'
 import Confetti from 'react-confetti';
@@ -83,7 +83,7 @@ function App() {
           width={width}
         /> : null
       }
-      <h1>Not Squid Game but Suit Game</h1>
+      <Txt>Not Squid Game but Suit Game</Txt>
       <Choice>
         {
           user === 'kertas' ? <FaRegHandPaper size={80} /> : null

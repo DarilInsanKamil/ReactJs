@@ -24,6 +24,9 @@ export const ButtonClick = styled.div`
     display: flex;
     width: 30%;
     justify-content: space-around;
+    @media only screen and (max-width: 768px) {
+        width: 90%;
+      }
     `
 export const Choice = styled.div`
     width: 27%;
@@ -31,6 +34,10 @@ export const Choice = styled.div`
     display: flex; 
     flex-direction: row;
     animation: 3s ${fadeIns};
+    @media only screen and (max-width: 768px) {
+        width: 80%;
+        
+      }
     `
 export const ButtonPlay = styled.div`
     border-radius: 5px;
@@ -43,4 +50,12 @@ export const ButtonPlay = styled.div`
     `
 export const Result = styled.h1`
     animation: 3s ${fadeIns};
+`
+export const Txt = styled.p`
+      font-size: 36px;
+      font-weight: bold;
+      @media only screen and (max-width: 768px) {
+          font-size: 20px;
+          
+      }
 `
