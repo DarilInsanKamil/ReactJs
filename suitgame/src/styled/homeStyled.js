@@ -6,23 +6,24 @@ const fadeIns = keyframes`${fadeIn}`
 const fadeOuts = keyframes`${fadeOut}`
 
 export const Container = styled.div`
+overflow-y: hidden;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blue;
+    background-color: #073763;
     flex-direction: column;
     `
 export const Button = styled.button`
     border-radius: 5px;
     padding: 10px 15px 10px 15px;
     border: none;
+    cursor: pointer;
     `
 export const ButtonClick = styled.div`
     display: flex;
     width: 30%;
     justify-content: space-around;
-    
     `
 export const Choice = styled.div`
     width: 27%;

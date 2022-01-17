@@ -5,6 +5,8 @@ import {
   Container, Button, ButtonClick, Choice, ButtonPlay,
   Result
 } from './styled/homeStyled'
+import Confetti from 'react-confetti';
+import useWindowSize from 'react-use/lib/useWindowSize'
 
 
 function App() {
@@ -15,10 +17,10 @@ function App() {
   const [play, setPlay] = useState(false)
 
   const random = () => {
-    let choice = ['batu', 'gunting', 'kertas']
     setTimeout(() => {
+      let choice = ['batu', 'gunting', 'kertas']
       setComp(choice[Math.floor(Math.random() * 3)])
-    }, 3000)
+    }, 5000)
   }
   useEffect(() => {
     random()
@@ -67,53 +69,65 @@ function App() {
     setCounter(+ 1)
     setPlay(true)
   }
-
+  // console.log(user)
+  // console.log(play)
+  const { height, width } = useWindowSize()
   return (
+
+
+
     <Container>
+      {
+        res === 'Win' ? <Confetti
+          height={height}
+          width={width}
+        /> : null
+      }
       <h1>Not Squid Game but Suit Game</h1>
       <Choice>
         {
-          user === 'kertas' ? <FaRegHandPaper size={100} /> : null
+          user === 'kertas' ? <FaRegHandPaper size={80} /> : null
         }
         {
-          user === 'gunting' ? <FaRegHandPeace size={100} /> : null
+          user === 'gunting' ? <FaRegHandPeace size={80} /> : null
         }
         {
-          user === 'batu' ? <FaRegHandRock size={100} /> : null
+          user === 'batu' ? <FaRegHandRock size={80} /> : null
+        }
+
+        {
+          comp === 'kertas' ? <FaRegHandPaper size={80} /> : null
         }
         {
-          comp === 'kertas' ? <FaRegHandPaper size={100} /> : null
+          comp === 'gunting' ? <FaRegHandPeace size={80} /> : null
         }
         {
-          comp === 'gunting' ? <FaRegHandPeace size={100} /> : null
-        }
-        {
-          comp === 'batu' ? <FaRegHandRock size={100} /> : null
+          comp === 'batu' ? <FaRegHandRock size={80} /> : null
         }
       </Choice>
       <Result>{res}</Result>
       <ButtonClick>
         {
           counter <= 0 ? <Button onClick={Kertas}>
-            <FaRegHandPaper size={100} />
+            <FaRegHandPaper size={80} />
           </Button> : <Button onClick={Kertas} disabled={true}>
-            <FaRegHandPaper size={100} />
+            <FaRegHandPaper size={80} />
           </Button>
         }
 
         {
           counter <= 0 ? <Button onClick={Batu}>
-            <FaRegHandRock size={100} />
+            <FaRegHandRock size={80} />
           </Button> : <Button disabled={true}>
-            <FaRegHandRock size={100} />
+            <FaRegHandRock size={80} />
           </Button>
         }
 
         {
           counter <= 0 ? <Button onClick={Gunting}>
-            <FaRegHandPeace size={100} />
+            <FaRegHandPeace size={80} />
           </Button> : <Button disabled={true}>
-            <FaRegHandPeace size={100} />
+            <FaRegHandPeace size={80} />
           </Button>
         }
 
