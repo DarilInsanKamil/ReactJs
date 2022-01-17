@@ -1,46 +1,127 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { FaRegHandPaper, FaRegHandPeace, FaRegHandRock } from 'react-icons/fa';
+import {
+  Container, Button, ButtonClick, Choice, ButtonPlay,
+  Result
+} from './styled/homeStyled'
 
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [userWin, setUserWin] = useState([]);
+  const [user, setUser] = useState("");
+  const [comp, setComp] = useState("");
+  const [res, setRes] = useState("");
+  const [counter, setCounter] = useState(0)
+  const [play, setPlay] = useState(false)
 
-  let random = Math.floor(Math.random() * 10)
-
-  function suit(random) {
-    if (random % 2 === 0) {
-      return 'Batu'
-    } else if (random >= 1 && random <= 5) {
-      return 'Gunting'
-    } else if (random >= 6 && random <= 10) {
-      return 'Kertas'
-    }
+  const random = () => {
+    let choice = ['batu', 'gunting', 'kertas']
+    setTimeout(() => {
+      setComp(choice[Math.floor(Math.random() * 3)])
+    }, 3000)
   }
-  
-  const comp = suit(random)
-console.log(comp)
+  useEffect(() => {
+    random()
+  }, [])
+
   const refresh = () => {
     window.location.reload()
   }
+  const logic = () => {
+    if (user === 'kertas' && comp === 'kertas') {
+      setRes('Seri')
+    } else if (user === 'batu' && comp === 'batu') {
+      setRes('Seri')
+    } else if (user === 'gunting' && comp === 'gunting') {
+      setRes('Seri')
+    } else if (user === 'kertas' && comp === 'batu') {
+      setRes('Win')
+    } else if (user === 'kertas' && comp === 'gunting') {
+      setRes('Lose')
+    } else if (user === 'gunting' && comp === 'kertas') {
+      setRes('Win')
+    } else if (user === 'gunting' && comp === 'batu') {
+      setRes('Lose')
+    } else if (user === 'batu' && comp === 'gunting') {
+      setRes('Win')
+    } else if (user === 'batu' && comp === 'kertas') {
+      setRes('Lose')
+    }
+  }
+  useEffect(() => {
+    logic()
+  }, [logic])
+
+  const Kertas = () => {
+    setUser('kertas')
+    setCounter(+ 1)
+    setPlay(true)
+  }
+  const Batu = () => {
+    setUser('batu')
+    setCounter(+ 1)
+    setPlay(true)
+  }
+  const Gunting = () => {
+    setUser('gunting')
+    setCounter(+ 1)
+    setPlay(true)
+  }
 
   return (
-    <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-      <button onClick={() => setUser('kertas')}>
-        <FaRegHandPaper size={48} />
-      </button>
-      <button onClick={() => setUser("batu")}>
-        <FaRegHandRock size={48} />
-      </button>
-      <button onClick={() => setUser("gunting")}>
-        <FaRegHandPeace size={48} />
-      </button>
-      <p>{userWin}</p>
+    <Container>
+      <h1>Not Squid Game but Suit Game</h1>
+      <Choice>
+        {
+          user === 'kertas' ? <FaRegHandPaper size={100} /> : null
+        }
+        {
+          user === 'gunting' ? <FaRegHandPeace size={100} /> : null
+        }
+        {
+          user === 'batu' ? <FaRegHandRock size={100} /> : null
+        }
+        {
+          comp === 'kertas' ? <FaRegHandPaper size={100} /> : null
+        }
+        {
+          comp === 'gunting' ? <FaRegHandPeace size={100} /> : null
+        }
+        {
+          comp === 'batu' ? <FaRegHandRock size={100} /> : null
+        }
+      </Choice>
+      <Result>{res}</Result>
+      <ButtonClick>
+        {
+          counter <= 0 ? <Button onClick={Kertas}>
+            <FaRegHandPaper size={100} />
+          </Button> : <Button onClick={Kertas} disabled={true}>
+            <FaRegHandPaper size={100} />
+          </Button>
+        }
+
+        {
+          counter <= 0 ? <Button onClick={Batu}>
+            <FaRegHandRock size={100} />
+          </Button> : <Button disabled={true}>
+            <FaRegHandRock size={100} />
+          </Button>
+        }
+
+        {
+          counter <= 0 ? <Button onClick={Gunting}>
+            <FaRegHandPeace size={100} />
+          </Button> : <Button disabled={true}>
+            <FaRegHandPeace size={100} />
+          </Button>
+        }
+
+      </ButtonClick>
       {
-        userWin === "seri" || userWin === "kamu kalah" || userWin === "kamu menang" ? <button onClick={refresh}>Main Lagi</button> : null
+        res === "Seri" || res === "Lose" || res === "Win" ? <ButtonPlay onClick={refresh}>Main Lagi</ButtonPlay> : null
       }
-    </div>
+    </Container>
   );
 }
 
