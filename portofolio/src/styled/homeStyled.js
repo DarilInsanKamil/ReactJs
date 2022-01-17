@@ -42,7 +42,12 @@ export const Icons = styled.div`
     flex-direction: column;
     @media only screen and (max-width: 768px){
         flex-direction: row;
+        width: 45%;
+        justify-content: space-between;
+        margin-top: 20px;
     }
+    margin-top: 0px;
+    // background-color: #ddd;
 `
 export const Name = styled.p`
 font-size: 84px;
@@ -50,10 +55,11 @@ font-weight: bold;
 font-family: 'Playfair Display', serif;
 `
 export const IconButton = styled.a`
+margin-left: 10px;
 cursor: pointer;
     &:hover {
         background-color: #ddd;
         border-radius: 15px;
     }
-    padding: 10px 15px 10px 15px;
+    padding: 10px 15px 5px 15px;
 `
