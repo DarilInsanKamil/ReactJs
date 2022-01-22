@@ -9,6 +9,7 @@ export const Container = styled.div`
 overflow-y: hidden;
     height: 100vh;
     display: flex;
+    overflow-x: hidden;
     justify-content: center;
     align-items: center;
     background-color: #073763;
@@ -29,7 +30,7 @@ export const ButtonClick = styled.div`
       }
     `
 export const Choice = styled.div`
-    width: 27%;
+    width: 26%;
     justify-content: space-between;
     display: flex; 
     flex-direction: row;
